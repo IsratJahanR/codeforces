@@ -9,7 +9,6 @@
 #include<bits/stdc++.h>
 #include<set>
 #include<iostream>
-#include<vector>
 using namespace std;
 
 
@@ -46,7 +45,7 @@ const lli M =998244353;
 #define lcm(a,b)        (a*(b/gcd(a,b)))
 #define yes             cout<<"YES\n";
 #define no              cout<<"NO\n";
-#define rev_sort(a)     sort(a.begin(),a.end(),greater<int>())
+#define rev_sort(a)     sort(a.begin(),a.end(),greater<>())
 #define reverse(a)      reverse(a.begin(),a.end())
 #define str(a)          a.begin(),a.end()
 #define mem(a,b)        memset(a, b, sizeof(a) )
@@ -55,43 +54,58 @@ const lli M =998244353;
 #define print(a,n)      for(ll i=0;i<n;i++)cout<<a<<" ";
 #define pll             pair <ll, ll>
 
-
-void solve()
+ll solve(ll a,ll b,ll x,ll y,ll n)
 {
-      ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
-
-      for(i=0;i<32;i++)
-      {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
-      }
-
-      cout<<ans<<endl;
-
-
+   ll a1,b1,m;
+   a1 = a-min(n,a-x);
+   n-=(a-a1);
+   b1 = b-min(n,b-y);
+   return a1*b1;
 }
+
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)
     {
-        //lli n,m,j,mx1=0,mx=0,mn=inf,i,res,temp=0,tmp1,tmp2,k,s2=0,ans=0,m1,m2,ff,p,g,q;
-        ll x,y,b;
-        string s;
-        solve();
+        lli n,m,j,mx1=0,mx=0,mn=inf,i,res,temp=0,tmp1,tmp2,ii,nn=-1,k,sum=0,ans=0,m1,m2,ff,p,g;
+        ll b,x,y;
+        cin>>n>>x>>y;
+        ll a[n];
+        //a[0]=x;
+        a[0]=y;
+        j=1;
+        m=y-x;
+        m1=m/n;
+
+        for(i=n-1;i>0;i--)
+        {
+            if(m%i==0)break;
+
+        }
+        //cout<<i<<endl;
+        m2=m/i;
+        //cout<<m2<<endl;
+        while(j<n)
+        {
+            if(a[j-1]-m2>0)
+            {
+                a[j]=a[j-1]-m2;
+                j++;
+            }
+            else break;
+        }
+        swap(a[j-1],a[0]);
+        while(j<n)
+        {
+            a[j]=a[j-1]+m2;
+                j++;
+        }
+
+        for(i=0;i<n;i++)cout<<a[i]<<" ";
+        cout<<endl;
 
     }
-}
-
+ }

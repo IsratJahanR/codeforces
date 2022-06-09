@@ -58,31 +58,60 @@ const lli M =998244353;
 
 void solve()
 {
-      ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
+   int n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
+   cin>>n>>q;
+   int a[n];
+   map<int,int>mp;
+   map<int,int>::iterator it;
+   for(i=0;i<n;i++)
+   {
+       cin>>a[i];
+       mp[a[i]]++;
+   }
 
-      for(i=0;i<32;i++)
-      {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
-      }
+   int an1,an2,s1=1;
 
-      cout<<ans<<endl;
+   vector<int>v;
 
+   for(it=mp.begin();it!=mp.end();++it)
+   {
+       x=it->first;
+       y=it->second;
+
+       if(y>=q) v.push_back(x);
+
+   }
+
+   for(i=1;i<v.size();i++)
+   {
+       if(v[i]==v[i-1]+1)s1++;
+       else
+       {
+
+           if(s1>mx)
+           {
+               mx=s1;
+               an1=v[i-s1];
+               an2=v[i-1];
+           }
+           s1=1;
+       }
+   }
+
+   if(s1>mx && v.size()>0)
+    {
+        //cout<<i-s1<<endl;
+    an1=v[i-s1];
+    an2=v[i-1];
+    }
+
+   if(v.size()==0)cout<<-1<<endl;
+   else cout<<an1<<" "<<an2<<endl;
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)

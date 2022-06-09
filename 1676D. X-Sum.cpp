@@ -46,7 +46,7 @@ const lli M =998244353;
 #define lcm(a,b)        (a*(b/gcd(a,b)))
 #define yes             cout<<"YES\n";
 #define no              cout<<"NO\n";
-#define rev_sort(a)     sort(a.begin(),a.end(),greater<int>())
+#define rev_sort(a)     sort(a.begin(),a.end(),greater<>())
 #define reverse(a)      reverse(a.begin(),a.end())
 #define str(a)          a.begin(),a.end()
 #define mem(a,b)        memset(a, b, sizeof(a) )
@@ -55,34 +55,58 @@ const lli M =998244353;
 #define print(a,n)      for(ll i=0;i<n;i++)cout<<a<<" ";
 #define pll             pair <ll, ll>
 
+bool square(int x)
+{
+    int p=sqrt(x);
+    if(p*p==x)return true;
+    else return false;
+}
 
 void solve()
 {
-      ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
+   int n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0;
+   cin>>n>>m;
+   int a[n][m];
+   string s[n];
+   for(i=0;i<n;i++)
+   {
+       for(j=0;j<m;j++)
+       {
+           cin>>a[i][j];
+       }
+   }
+   for(i=0;i<n;i++)
+   {
+       for(j=0;j<m;j++)
+       {
+           sum=a[i][j];
+           for(k=i-1,l=j-1;k>=0 && l>=0;k--,l--)
+           {
+              sum+=a[k][l];
+           }
+           for(k=i-1,l=j+1;k>=0 && l<m;k--,l++)
+           {
+              sum+=a[k][l];
+           }
+           for(k=i+1,l=j-1;k<n && l>=0;k++,l--)
+           {
+              sum+=a[k][l];
+           }
+           for(k=i+1,l=j+1;k<n && l<m;k++,l++)
+           {
+              sum+=a[k][l];
+           }
+           mx=max(sum,mx);
+       }
 
-      for(i=0;i<32;i++)
-      {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
-      }
-
-      cout<<ans<<endl;
+   }
+   cout<<mx<<endl;
 
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)
@@ -94,4 +118,3 @@ int main(){
 
     }
 }
-

@@ -55,34 +55,44 @@ const lli M =998244353;
 #define print(a,n)      for(ll i=0;i<n;i++)cout<<a<<" ";
 #define pll             pair <ll, ll>
 
+bool square(int x)
+{
+    int p=sqrt(x);
+    if(p*p==x)return true;
+    else return false;
+}
+
 
 void solve()
 {
-      ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
-
-      for(i=0;i<32;i++)
+   int n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q;
+   cin>>n>>q;
+   int a[n];
+   ll x[q];
+   int s[n];
+   for(i=0;i<n;i++) cin>>a[i];
+   sort(a,a+n,greater<int>());
+   s[0]=a[0];
+   for(i=1;i<n;i++)s[i]=s[i-1]+a[i];
+   mx=s[n-1];
+   for(i=0;i<q;i++)
+   {
+       cin>>x[i];
+      if(x[i]>mx)sum=-1;
+      else
       {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
+
+        auto it=lower_bound(s,s+n,x[i])-s;
+        sum=(it)+1;
       }
 
-      cout<<ans<<endl;
-
+      cout<<sum<<endl;
+   }
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)

@@ -1,3 +1,4 @@
+
 ///                      Author: Israt Jahan Reshma
 ///                            ID:18ICTCSE041
 ///                             Dept.of CSE
@@ -59,30 +60,24 @@ const lli M =998244353;
 void solve()
 {
       ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
-
-      for(i=0;i<32;i++)
+      lli nn;
+      cin>>nn;
+      if(nn<4 || nn%2==1)cout<<-1<<endl;
+      else
       {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
+          mn = nn/6;
+          if(nn%6!=0)mn++;
+          mx= nn/4;
+          cout<<mn<<" "<<mx<<endl;
+
       }
 
-      cout<<ans<<endl;
 
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)
@@ -94,4 +89,3 @@ int main(){
 
     }
 }
-

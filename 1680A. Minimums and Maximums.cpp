@@ -59,30 +59,22 @@ const lli M =998244353;
 void solve()
 {
       ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
 
-      for(i=0;i<32;i++)
+      cin>>m>>n>>x>>y;
+      if(x<m)
       {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
+          swap(m,x);
+          swap(n,y);
       }
+      if(x>n)cout<<x+m<<endl;
+      else cout<<x<<endl;
 
-      cout<<ans<<endl;
 
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)

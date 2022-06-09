@@ -1,9 +1,6 @@
-///                      Author: Israt Jahan Reshma
-///                            ID:18ICTCSE041
-///                             Dept.of CSE
-///                                BSMRSTU
+///
 
-///......................****************************............................///
+///............****************************............................///
 
 
 #include<bits/stdc++.h>
@@ -21,7 +18,7 @@ using namespace std;
 #define S               second
 #define mp              make_pair
 #define I               insert
-#define endl            '\n'
+//#define endl            '\n'
 #define pob             pop_back
 #define inf             1e9+9
 #define setpoint(x)     setprecision(x)<<fixed
@@ -58,31 +55,36 @@ const lli M =998244353;
 
 void solve()
 {
-      ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
-
-      for(i=0;i<32;i++)
-      {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
-      }
-
-      cout<<ans<<endl;
+   long long n,m,mx1=-1,mx2=0,ans=0,i,j,sum=0,mn=100000000,l,k,mx=0,q,x=0,y=0,res,p;
+   cin>>n>>k;
+   string s;
+   cin>>s;
+   int w=0,b=0;
+   ll a[n+1];
+   vector<int>v1,v2;
+   a[0]=0;
+   for(i=0;i<n;i++)
+   {
+       if(s[i]=='W')
+       {
+           w++;
+       }
+       a[i+1]=w;
+   }
+   //for(i=0;i<=n;i++)cout<<a[i];
+   //cout<<endl;
+   for(i=n;i>=k;i--)
+   {
+       mn=min(mn,a[i]-a[i-k]);
+      // cout<<"bb"<<endl;
+   }
+   cout<<mn<<endl;
 
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)
@@ -94,4 +96,3 @@ int main(){
 
     }
 }
-

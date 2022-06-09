@@ -46,7 +46,7 @@ const lli M =998244353;
 #define lcm(a,b)        (a*(b/gcd(a,b)))
 #define yes             cout<<"YES\n";
 #define no              cout<<"NO\n";
-#define rev_sort(a)     sort(a.begin(),a.end(),greater<int>())
+#define rev_sort(a)     sort(a.begin(),a.end(),greater<>())
 #define reverse(a)      reverse(a.begin(),a.end())
 #define str(a)          a.begin(),a.end()
 #define mem(a,b)        memset(a, b, sizeof(a) )
@@ -56,42 +56,40 @@ const lli M =998244353;
 #define pll             pair <ll, ll>
 
 
-void solve()
-{
-      ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
-
-      for(i=0;i<32;i++)
-      {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
-      }
-
-      cout<<ans<<endl;
-
-
-}
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)
     {
-        //lli n,m,j,mx1=0,mx=0,mn=inf,i,res,temp=0,tmp1,tmp2,k,s2=0,ans=0,m1,m2,ff,p,g,q;
-        ll x,y,b;
-        string s;
-        solve();
+        lli n,m,j,mx1=0,mx=0,mn=inf,i,res,temp=0,tmp1,tmp2,ii,nn=-1,k,sum=0,ans=0,m1,m2,ff,p,g;
+        ll l,r,a;
+        cin>>n;
+        if(n<=2)
+        {
+            cout<<n<<endl;
+            continue;
+        }
+        vector<int>v;
+        i=3;
+        v.pb(2);
+        v.pb(1);
+        while(i<n)
+        {
+            if(v[v.size()-1]==2)v.pb(1);
+            else if(v[0]==2)v.insert(v.begin(), 1);
+            else
+            {
+                 v.pop_back();
+                 v.insert(v.begin(), 2);
+            }
+            i++;
+        }
+        for(i=0;i<v.size();i++)cout<<v[i];
+        cout<<endl;
+
 
     }
-}
+ }
 

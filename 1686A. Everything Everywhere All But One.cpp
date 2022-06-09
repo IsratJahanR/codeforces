@@ -1,7 +1,4 @@
-///                      Author: Israt Jahan Reshma
-///                            ID:18ICTCSE041
-///                             Dept.of CSE
-///                                BSMRSTU
+///                     STACK_UNDERFLOW------>
 
 ///......................****************************............................///
 
@@ -21,7 +18,7 @@ using namespace std;
 #define S               second
 #define mp              make_pair
 #define I               insert
-#define endl            '\n'
+//#define endl            '\n'
 #define pob             pop_back
 #define inf             1e9+9
 #define setpoint(x)     setprecision(x)<<fixed
@@ -58,31 +55,33 @@ const lli M =998244353;
 
 void solve()
 {
-      ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
+   long long n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
 
-      for(i=0;i<32;i++)
-      {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
-      }
+   cin >> n;
+   ll a[n];
+   for(i=0;i<n;i++)
+   {
+       cin>>a[i];
+       sum+=a[i];
+   }
+   double xx = (double)sum/n;
+   int f=0;
+   for(i=0;i<n;i++)
+   {
+       if(xx==a[i])
+       {
+         f=1;
+         break;
+       }
 
-      cout<<ans<<endl;
-
+   }
+   if(f==1)cout<<"YES"<<endl;
+   else cout<<"NO"<<endl;
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)
@@ -94,4 +93,3 @@ int main(){
 
     }
 }
-

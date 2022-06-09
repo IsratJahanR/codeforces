@@ -1,9 +1,6 @@
-///                      Author: Israt Jahan Reshma
-///                            ID:18ICTCSE041
-///                             Dept.of CSE
-///                                BSMRSTU
+///
 
-///......................****************************............................///
+///............****************************............................///
 
 
 #include<bits/stdc++.h>
@@ -21,7 +18,7 @@ using namespace std;
 #define S               second
 #define mp              make_pair
 #define I               insert
-#define endl            '\n'
+//#define endl            '\n'
 #define pob             pop_back
 #define inf             1e9+9
 #define setpoint(x)     setprecision(x)<<fixed
@@ -55,34 +52,64 @@ const lli M =998244353;
 #define print(a,n)      for(ll i=0;i<n;i++)cout<<a<<" ";
 #define pll             pair <ll, ll>
 
-
+string toString(int x)
+{
+    string s;
+    stringstream ss;
+    ss<<x;
+    ss>>s;
+    return s;
+}
 void solve()
 {
-      ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
+   long long n,m,mx1=-1,mx2=0,ans=0,i,j,sum=0,mn=100000000,l,k,mx=0,q,x=0,y=0,res,p;
+   cin>>n;
+   ll a[n],b[n];
+   for(i=0;i<n;i++)
+   {
+       cin>>a[i];
 
-      for(i=0;i<32;i++)
-      {
-          ll cnt=0;
-        for(j=0;j<n;j++)
+   }
+   p=0;
+   for(i=0;i<n;i++)
+   {
+       cin>>b[i];
+       if(b[i]>0)p=i;
+   }
+    x=a[p]-b[p];
+    int f=0;
+    if(p==0 && b[0]==0)f=0;
+    else if(x<0)f=1;
+    else
+    {
+        for(i=0;i<n;i++)
         {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
+          if(b[i]!=0 && (a[i]-b[i])!=x)
+          {
+              f=1;
+              break;
+          }
+          else if(b[i]==0 && a[i]-x>0)
+          {
+              f=1;
+              break;
+          }
         }
-        ans+=(cnt*(cnt-1))/2;
-      }
+    }
 
-      cout<<ans<<endl;
+
+
+   if(f==1)cout<<"NO"<<endl;
+   else cout<<"YES"<<endl;
+
+
+
 
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)
@@ -94,4 +121,3 @@ int main(){
 
     }
 }
-

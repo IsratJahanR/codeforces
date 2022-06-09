@@ -59,30 +59,55 @@ const lli M =998244353;
 void solve()
 {
       ll n,m,mx1=0,mx2=0,ans=0,i,j,sum=0,mn=1000000,l,k,mx=0,q,x,y;
-      cin>>n;
-      ll a[n];
-      ll cnt[32]={0};
-      for(i=0;i<n;i++)cin>>a[i];
-      sort(a,a+n);
 
-      for(i=0;i<32;i++)
+      cin>>m>>n;
+      string s[m];
+      int x1=-1,y1=-1,x2=-1,y2=-1;
+      for(i=0;i<m;i++) cin>>s[i];
+
+      int f=0;
+        x=-1;
+      for(i=0;i<m;i++)
       {
-          ll cnt=0;
-        for(j=0;j<n;j++)
-        {
-            if(a[j]>>i==1 && a[j]>>i+1==0)cnt++;
-        }
-        ans+=(cnt*(cnt-1))/2;
-      }
+          for(j=0;j<n;j++)
+          {
+             if(s[i][j]=='R')
+             {
+                 x1=i;
+                 y1=j;
+                 break;
+             }
 
-      cout<<ans<<endl;
+          }
+          if(x1>=0)
+          break;
+      }
+      for(i=0;i<n;i++)
+      {
+          for(j=0;j<m;j++)
+          {
+             if(s[j][i]=='R')
+             {
+                 x2=i;
+                 y2=j;
+                 break;
+             }
+
+          }
+          if(x2>=0)
+          break;
+
+      }
+      //cout<<x1<<" "<<y1<<" "<<x2<<" "<<y2<<endl;
+      if(x1>=y2 || x2>=y1)cout<<"YES"<<endl;
+      else cout<<"NO"<<endl;
+
 
 
 }
 int main(){
 
    	//fastio()
-
    	ll tc; tc=1;
     cin>>tc;
     while(tc--)
